@@ -2,9 +2,19 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { Tabs } from "expo-router";
 
+
 const _layout = () => {
-  return (
+    return (
+      
       <Tabs
+            screenOptions={{
+              tabBarStyle: {
+              backgroundColor: 'orange',
+              borderRadius: 25,
+              position: 'absolute',
+                  
+              }
+          }}
       >
           <Tabs.Screen
               name="index"
@@ -14,7 +24,7 @@ const _layout = () => {
               }}
           />
 
-<Tabs.Screen
+        <Tabs.Screen
               name="deelnemers"
               options={{
                   title: 'Deelnemers',

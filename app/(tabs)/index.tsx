@@ -1,5 +1,7 @@
 import { Dimensions, Image, ScrollView, Text, View } from "react-native";
+import MapView from 'react-native-maps';
 import { SafeAreaView } from "react-native-safe-area-context";
+import MapStyle from "../../constants/mapstyles.json";
 
 const { width } = Dimensions.get("window");
 const CARD_WIDTH = Math.min(width * 0.9, 378);
@@ -38,24 +40,54 @@ export default function Index() {
             <Text style={{ color: "white", alignSelf: "flex-start", fontSize: 18, fontWeight: "bold" }}>Dag 1</Text>
 
             {/* Kaart */}
-            <View
-              style={{
-                borderRadius: 16,
-                overflow: "hidden",
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "red",
-                width: CARD_WIDTH,
-                height: 151,
-              }}
+  
+<View
+  style={{
+    borderRadius: 16,
+    overflow: "hidden",
+    alignItems: "center",
+    justifyContent: "center",
+    width: CARD_WIDTH,
+    height: 151,
+    position: "relative",
+  }}
             >
-              <Image
-                source={require('../../assets/images/countour.png')}
-                resizeMode="cover"
-                style={{ width: CARD_WIDTH, height: 151, borderRadius: 16 }}
-              />
-            </View>
+                <Image
+    source={require("../../assets/images/countour.png")}
+    resizeMode="cover"
+    style={{
+      width: CARD_WIDTH,
+      height: 151,
+      borderRadius: 16,
+      position: "absolute",
+      top: 0,
+      left: 0,
+      zIndex: 0,
+    }}
+  />
 
+              
+  <MapView
+    style={{
+      width: CARD_WIDTH,
+      height: 144,
+      borderRadius: 16,
+                  position: "absolute",
+                  alignItems: "center",
+      left: 0,
+      zIndex: 0,
+    }}
+    initialRegion={{
+      latitude: 52.3702,
+      longitude: 4.8952,
+      latitudeDelta: 0.05,
+      longitudeDelta: 0.05,
+    }}
+    provider="google"
+    customMapStyle={MapStyle}
+  />
+              </View>
+             
             {/* Most wanted */}
             <View
               style={{
